@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "vasuapp">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <style>
+        #sizing {
+            width:2px;
+        }
+    </style>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+
+</head>
+
+<body>
+<div class="row" ng-controller = " dishDetailController">
+    <div class="col-xs-6">
+        <ul class = "media-list">
+            <li class = "media">
+                <a class = "media-left" href = "#" >
+                    <img class = "media-object" src={{dish.image}} alt="crunchy rice receipe">
+                </a>
+                <div class = "media-body">
+                    <h2 class = "media-heading"> {{dish.name}} <span class = "label label-danger">{{dish.label}}</span>
+                        <span class = "badge">{{dish.price}}</span>
+                    </h2>
+                    <p>{{dish.information}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class = "col-xs-12">
+        <div class = "inputfield">
+            <input type = "text" ng-model ="initi">
+        </div>
+    </div>
+
+    <div class="col-xs-12" ng-repeat="listcomments in dish.comment| orderBy:initi">
+        <blockquote>
+            <p> {{listcomments.dish.comment}}
+            </p>
+            <footer>
+                {{listcomments.dish.author}} on {{listcomments.dish.date| date }}
+            </footer>
+        </blockquote>
+    </div>
+</div>
+
+<script type="text/javascript" src="app/scripts/app.js"></script>
+<script type="text/javascript" src="app/scripts/controllers.js"></script>
+<script type="text/javascript" src="app/scripts/services.js"></script>
+
+</body>
+</html>
